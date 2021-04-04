@@ -18,6 +18,6 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Install Dependencies
-      run: dotnet restore ZDC.Core.sln
+      run: dotnet restore ZDC.Blazor.sln
     - name: Dotnet Build
-      run: dotnet build ZDC.Core.sln --configuration Release --no-restore
+      run: dotnet build ZDC.Blazor.sln --configuration Release --no-restore
