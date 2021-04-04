@@ -1,0 +1,47 @@
+﻿@page "/fetchdata"
+
+@using ZDC.Blazor.Services
+@using ZDC.Models
+@inject UserService UserService
+
+<h1>Roster</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (_users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CID</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in _users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.FullName</td>
+                    <td>@user.UserRating</td>
+                    <td>@user.Joined.ToString("G")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<User> _users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _users = await UserService.GetUsers();
+    }
+}
