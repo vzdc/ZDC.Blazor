@@ -16,4 +16,4 @@ cd /var/www/ZDC.Blazor
 
 sudo chmod -R 755 *
 
-sudo systemctl start core
+sudo systemctl start blazor
