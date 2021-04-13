@@ -1,0 +1,54 @@
+﻿@using ZDC.Blazor.Services
+@using ZDC.Models
+@inject OnlineControllerService OnlineControllerService
+
+<div class="card shadow-dark">
+    <div class="card-header bg-light">
+        <h3 class="font-bold text-center">
+            <i class="fas fa-broadcast-tower"></i> Online Controllers
+        </h3>
+    </div>
+    <div class="card-body bg-between">
+        @if (_onlineControllers == null)
+        {
+            <h4 class="text-center text-danger font-bold">Error fetching online controllers</h4>
+        }
+        else if (_onlineControllers != null && _onlineControllers.Count > 0)
+        {
+            <table class="table table-sm table-responsive-sm table-borderless">
+                <thead>
+                    <tr class="border-bottom border-dark">
+                        <th scope="col" class="text-center">Callsign</th>
+                        <th scope="col" class="text-center">Frequency</th>
+                        <th scope="col" class="text-center">Name</th>
+                        <th scope="col" class="text-center">Time Online</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var controller in _onlineControllers)
+                {
+                    <tr>
+                        <td class="text-center">@controller.Position</td>
+                        <td class="text-center">@controller.Frequency</td>
+                        <td class="text-center">@controller.User.FullName</td>
+                        <td class="text-center">@controller.Online</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3 class="text-center font-bold">No Controllers Online</h3>
+        }
+    </div>
+</div>
+
+@code {
+    private IList<OnlineController> _onlineControllers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _onlineControllers = await OnlineControllerService.GetOnlineControllersFull();
+    }
+}

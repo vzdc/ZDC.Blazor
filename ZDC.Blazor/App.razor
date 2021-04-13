@@ -1,29 +1,32 @@
-<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(HomeLayout)" />
-    </Found>
-    <NotFound>
-        <LayoutView Layout="@typeof(HomeLayout)">
-            <div class="container">
-                <div class="card mb-3 bg-gray-300">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Page Not Found</h5>
-                        <p class="card-text text-center">If you believe this is an error, please submit a bug report.</p>
-                        <div class="row">
-                            <div class="col-sm">
-                                <NavLink class="btn btn-primary float-sm-start" href="">
-                                    Home
-                                </NavLink>
-                            </div>
-                            <div class="col-sm">
-                                <NavLink class="btn btn-danger float-sm-end" href="bugreport">
-                                    Bug Report
-                                </NavLink>
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(HomeLayout)" />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(HomeLayout)">
+                <Title>vZDC ARTCC | 404</Title>
+                <div class="container">
+                    <div class="card mb-3 bg-gray-800">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Page Not Found</h5>
+                            <p class="card-text text-center">If you believe this is an error, please submit a bug report.</p>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <NavLink class="btn btn-primary float-sm-start" href="">
+                                        Home
+                                    </NavLink>
+                                </div>
+                                <div class="col-sm">
+                                    <NavLink class="btn btn-danger float-sm-end" href="bugreport">
+                                        Bug Report
+                                    </NavLink>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </LayoutView>
-    </NotFound>
-</Router>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>

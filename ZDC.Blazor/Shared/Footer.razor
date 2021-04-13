@@ -1,0 +1,40 @@
+﻿<footer class="container-fluid bg-gray-800 text-white"
+        style="padding-top: 1%; padding-bottom: 1%;">
+    <div class="row">
+        <div class="col-sm">
+            <a href="https://vatstar.com/" target="_blank">
+                <img class="img-fluid float-sm-end" src="images/vatstar.png" alt="VATSTAR"
+                     style="width: 300px; height: auto; margin-top: 35px;" />
+            </a>
+        </div>
+        <div class="col-sm">
+            <a href="https://www.flyhighva.net/" target="_blank">
+                <img class="img-fluid" src="images/flyhigh.png" alt="Fly High Virtual"
+                     style="width: 300px; height: auto" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm text-center">
+            <NavLink class="text-white" href="bugreport">Bug Report</NavLink>
+        </div>
+        <div class="col-sm text-center">
+            <NavLink class="text-white" href="privacy">Privacy Policy</NavLink>
+        </div>
+        <div class="col-sm text-center">
+            <NavLink class="text-white" href="changelog">Changelog</NavLink>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm text-center">
+            &copy; @Year Washington Virtual ARTCC
+        </div>
+    </div>
+</footer>
+
+@code
+{
+    public int Year = DateTime.UtcNow.Year;
+}
