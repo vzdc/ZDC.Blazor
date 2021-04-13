@@ -1,0 +1,56 @@
+﻿@using ZDC.Models
+@using ZDC.Blazor.Services
+@inject AirportService AirportService
+
+<div class="card shadow-dark">
+    <div class="card-header bg-light padding">
+        <h3 class="font-bold text-center">
+            <i class="fas fa-cloud"></i> Weather
+        </h3>
+    </div>
+    <div class="card-body bg-between padding">
+        @if (_airports == null)
+        {
+            <h4 class="text-center text-danger font-bold">Error Fetching Weather</h4>
+        }
+        else if (_airports != null && _airports.Count > 0)
+        {
+            <table class="table table-sm table-responsive-sm table-borderless">
+                <thead>
+                    <tr class="border-bottom border-dark">
+                        <th scope="col" class="text-center">ICAO</th>
+                        <th scope="col" class="text-center">Conditions</th>
+                        <th scope="col" class="text-center">Wind</th>
+                        <th scope="col" class="text-center">Temperature</th>
+                        <th scope="col" class="text-center">Altimeter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var airport in _airports)
+                {
+                    <tr class="text-center">
+                        <td class="font-bold">@airport.Icao</td>
+                        <td>@airport.Metar.Conditions</td>
+                        <td>@airport.Metar.Wind</td>
+                        <td>@airport.Metar.Temp</td>
+                        <td>@airport.Metar.Altimeter</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3 class="text-center font-bold">No Weather Found</h3>
+        }
+    </div>
+</div>
+
+@code {
+    private IList<Airport> _airports;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _airports = await AirportService.GetAirports();
+    }
+}

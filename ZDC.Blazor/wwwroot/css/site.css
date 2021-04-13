@@ -39,3 +39,18 @@
     background-image: url("../images/Washington.jpg");
     min-height: 100%
 }
+
+.top-first {
+    background: rgb(204,189,103);
+    background: linear-gradient(90deg, rgba(204,189,103,1) 0%, rgba(255,221,0,1) 50%);
+}
+
+.top-second {
+    background: rgb(110,109,109);
+    background: linear-gradient(90deg, rgba(110,109,109,1) 0%, rgba(153,153,153,1) 50%);
+}
+
+.top-third {
+    background: rgb(209,156,71);
+    background: linear-gradient(90deg, rgba(209,156,71,1) 0%, rgba(255,157,0,1) 50%);
+}

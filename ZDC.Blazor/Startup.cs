@@ -24,9 +24,10 @@ namespace ZDC.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddHeadElementHelper();
+            services.AddSingleton<AirportService>();
             services.AddSingleton<AnnouncementService>();
+            services.AddSingleton<EventService>();
             services.AddSingleton<OnlineControllerService>();
-            services.AddSingleton<OnlineFacilitiesService>();
             services.AddSingleton<UserService>();
         }
 

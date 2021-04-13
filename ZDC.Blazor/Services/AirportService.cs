@@ -25,13 +25,5 @@ namespace ZDC.Blazor.Services
                 ? null
                 : JsonConvert.DeserializeObject<IList<Airport>>(await response.Content.ReadAsStringAsync());
         }
-
-        public async Task<IList<Airport>> GetAirportsFull()
-        {
-            var response = await _client.GetAsync(_config.GetValue<string>("AirportsFull"));
-            return !response.IsSuccessStatusCode
-                ? null
-                : JsonConvert.DeserializeObject<IList<Airport>>(await response.Content.ReadAsStringAsync());
-        }
     }
 }

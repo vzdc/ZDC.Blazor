@@ -1,0 +1,43 @@
+﻿@using ZDC.Blazor.Services
+@using ZDC.Models
+@inject EventService EventService
+
+<div class="card shadow-dark">
+    <div class="card-header bg-light padding">
+        <h3 class="font-bold text-center">
+            <i class="fas fa-calendar-alt"></i> Events
+        </h3>
+    </div>
+    <div class="card-body bg-between padding">
+        @if (_events == null)
+        {
+            <h4 class="text-center text-danger font-bold">Error Fetching Events</h4>
+        }
+        else if (_events != null && _events.Count > 0)
+        {
+            foreach (var events in _events)
+            {
+                if (events.Open)
+                {
+                    <NavLink href="@($"event/{events.Id}")">
+                        <img src="@events.Banner" class="img-fluid rounded" alt="@events.Title" />
+                    </NavLink>
+                }
+            }
+        }
+        else
+        {
+            <h3 class="text-center font-bold">No Events Found</h3>
+        }
+    </div>
+</div>
+
+@code {
+    private IList<Event> _events;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _events = await EventService.GetEvents();
+    }
+
+}
