@@ -1,20 +1,41 @@
+.navbar-default {
+    border: none !important;
+}
+
+.navbar {
+    border: none !important;
+}
+
+.navbar-nav {
+    border: none !important;
+}
+
+.nav-item-padding {
+    padding: 0.4rem !important;
+}
+
 .container-zdc {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .font-bold {
     font-weight: bold;
 }
 
-.padding {
-    padding: 5px;
-}
-
 .card-margin {
-    margin-bottom: 2%;
+    margin-bottom: 4%;
 }
 
 .announcement-date {
     padding: 5px;
+}
+
+.padding {
+    padding: 0.8rem !important;
+}
+
+.home-image {
+    background-image: url("../images/Washington.jpg");
+    min-height: 100%
 }

@@ -3,12 +3,12 @@
 @inject OnlineControllerService OnlineControllerService
 
 <div class="card shadow-dark">
-    <div class="card-header bg-light">
+    <div class="card-header bg-light padding">
         <h3 class="font-bold text-center">
             <i class="fas fa-broadcast-tower"></i> Online Controllers
         </h3>
     </div>
-    <div class="card-body bg-between">
+    <div class="card-body bg-between padding">
         @if (_onlineControllers == null)
         {
             <h4 class="text-center text-danger font-bold">Error fetching online controllers</h4>

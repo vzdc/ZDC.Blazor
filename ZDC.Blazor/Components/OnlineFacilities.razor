@@ -2,13 +2,13 @@
 @using ZDC.Models
 @inject OnlineFacilitiesService OnlineFacilitiesService
 
-<div class="card shadow-dark" style="margin-bottom: 100px;">
-    <div class="card-header bg-light">
+<div class="card shadow-dark">
+    <div class="card-header bg-light padding">
         <h3 class="font-bold text-center">
             <i class="fas fa-globe"></i> Online Facilities
         </h3>
     </div>
-    <div class="card-body bg-between">
+    <div class="card-body bg-between padding">
         @if (_onlineFacilities != null)
         {
             <table class="table table-sm table-responsive-sm table-borderless font-bold">
@@ -93,7 +93,7 @@
         }
         else
         {
-            <h4 class="font-bold text-center text-danger">Error fetching online facilities</h4>
+            <h4 class="font-bold text-center text-danger padding">Error fetching online facilities</h4>
         }
     </div>
 </div>
