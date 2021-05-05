@@ -28,6 +28,7 @@ namespace ZDC.Blazor
             services.AddSingleton<AnnouncementService>();
             services.AddSingleton<EventService>();
             services.AddSingleton<OnlineControllerService>();
+            services.AddSingleton<OverflightService>();
             services.AddSingleton<UserService>();
         }
 
@@ -45,12 +46,13 @@ namespace ZDC.Blazor
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

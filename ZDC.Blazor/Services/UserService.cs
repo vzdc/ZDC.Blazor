@@ -37,5 +37,15 @@ namespace ZDC.Blazor.Services
         {
             return await _client.GetFromJsonAsync<IList<Hours>>(_config.GetValue<string>("UsersTopFull"));
         }
+
+        public async Task<IList<User>> GetStaff()
+        {
+            return await _client.GetFromJsonAsync<IList<User>>(_config.GetValue<string>("Staff"));
+        }
+
+        public async Task<IList<User>> GetTrainingStaff()
+        {
+            return await _client.GetFromJsonAsync<IList<User>>(_config.GetValue<string>("TrainingStaff"));
+        }
     }
 }

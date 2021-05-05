@@ -1,0 +1,19 @@
+﻿@using ZDC.Models
+
+<tr>
+    <td class="text-center">@User.FullName</td>
+    <td class="text-center">@User.Initials</td>
+    <td class="text-center">@User.Status</td>
+    <td class="text-center">@User.UserRating</td>
+    <td>
+        <RosterCertification Name="GND/DEL" Type="@User.Certifications.Ground" />
+        <RosterCertification Name="TWR" Type="@User.Certifications.Tower" />
+        <RosterCertification Name="Approach" Type="@User.Certifications.Approach" />
+        <RosterCertification Name="Center" Type="@User.Certifications.Center" />
+    </td>
+</tr>
+
+
+@code {
+    [Parameter] public User User { get; set; }
+}

@@ -1,44 +1,43 @@
 ﻿@page "/roster"
 @layout PublicLayout
-
 @using ZDC.Blazor.Services
 @using ZDC.Models
 @inject UserService UserService
 
-<Title>vZDC ARTCC | Roster</Title>
 
-<h1>Roster</h1>
-
-<p>This component demonstrates fetching data from a service.</p>
-
-@if (_users == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>CID</th>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>Joined</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in _users)
-            {
-                <tr>
-                    <td>@user.Id</td>
-                    <td>@user.FullName</td>
-                    <td>@user.UserRating</td>
-                    <td>@user.Joined.ToString("G")</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<SpinLoader IsLoading="@(_users == null)">
+    <ContentTemplate>
+        <div class="container-60" style="margin-top: 5%">
+            <div class="card shadow-dark">
+                <div class="card-header bg-light padding">
+                    <h3 class="font-bold text-center">
+                        <i class="fas fa-users"></i> Roster
+                    </h3>
+                </div>
+                <div class="card-body bg-between padding">
+                    <table class="table table-sm table-responsive-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Name</th>
+                            <th scope="col" class="text-center">Initials</th>
+                            <th scope="col" class="text-center">Status</th>
+                            <th scope="col" class="text-center">Rating</th>
+                            <th scope="col" class="text-center">Certifications</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var user in _users)
+                        {
+                            <RosterEntry User="user"></RosterEntry>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ContentTemplate>
+</SpinLoader>
+<br/>
 
 @code {
     private IList<User> _users;

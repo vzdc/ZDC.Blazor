@@ -1,0 +1,64 @@
+﻿@using ZDC.Models
+@using ZDC.Blazor.Services
+@inject OverflightService OverflightService
+
+<div class="card shadow-dark">
+    <div class="card-header bg-light padding">
+        <h3 class="font-bold text-center">
+            <i class="fas fa-plane"></i> Overflights
+        </h3>
+    </div>
+    <div class="card-body bg-between padding">
+        @if (_overflights == null)
+        {
+            <h4 class="text-center text-danger font-bold">Error Fetching Overflights</h4>
+        }
+        else if (_overflights != null && _overflights.Count > 0)
+        {
+            <table class="table table-sm table-responsive-sm table-borderless">
+                <thead>
+                <tr class="border-bottom border-dark">
+                    <th scope="col" class="text-center">Callsign</th>
+                    <th scope="col" class="text-center">Departure</th>
+                    <th scope="col" class="text-center">Arrival</th>
+                    <th scope="col" class="text-center">Route</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var overflight in _overflights)
+                {
+                    if (!string.IsNullOrEmpty(overflight.Route))
+                    {
+                    <tr class="text-center">
+                        <td class="font-bold">@overflight.Callsign</td>
+                        <td>@overflight.Departure</td>
+                        <td>@overflight.Arrival</td>
+                        @if (overflight.Route.Length > 32)
+                        {
+                            <td>@overflight.Route.Substring(0, 32)...</td>
+                        }
+                        else
+                        {
+                            <td>@overflight.Route</td>
+                        }
+                    </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3 class="text-center font-bold">No Weather Found</h3>
+        }
+    </div>
+</div>
+
+@code {
+    private IList<Overflight> _overflights;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _overflights = await OverflightService.GetOverflights();
+    }
+}

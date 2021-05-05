@@ -11,7 +11,7 @@
     <div class="card-body bg-between padding">
         @if (_announcements == null)
         {
-            <h3 class="text-center text-danger font-bold">Error Fetching Announcements</h3>
+            <h3 class="text-center font-bold">Loading Announcements</h3>
         }
         else if (_announcements != null && _announcements.Count > 0)
         {
@@ -42,6 +42,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _announcements = await AnnouncementService.GetAnnouncementsFull();
+        await Task.Run(LoadAnnouncements);
+        StateHasChanged();
+    }
+
+    public void LoadAnnouncements()
+    {
+        _announcements = AnnouncementService.GetAnnouncementsFull().Result;
     }
 }

@@ -6,12 +6,15 @@
 
   <ItemGroup>
     <PackageReference Include="Blazored.Modal" Version="6.0.1" />
+    <PackageReference Include="BlazorPro.Spinkit" Version="1.2.0" />
     <PackageReference Include="IdentityModel" Version="5.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Toolbelt.Blazor.HeadElement" Version="5.4.1" />
-    <PackageReference Include="ZDC.Models" Version="1.4.7" />
+    <PackageReference Include="VATSIM.Connect.AspNetCore.Blazor.Client" Version="0.0.1-alpha.7" />
+    <PackageReference Include="VATSIM.Connect.AspNetCore.Shared" Version="0.0.1-alpha.7" />
+    <PackageReference Include="ZDC.Models" Version="1.5.0" />
   </ItemGroup>
 
   <ItemGroup>

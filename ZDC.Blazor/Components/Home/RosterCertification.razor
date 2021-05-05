@@ -1,0 +1,33 @@
+﻿@using ZDC.Models
+
+@switch (Type)
+{
+    case CertificationType.None:
+        break;
+
+    case CertificationType.Solo:
+        <span class="badge bg-warning">
+            <a data-toggle="tooltip" title="Solo Authorization"><i class="fas fa-user-check"></i> @Name</a>
+        </span>
+        break;
+    case CertificationType.Minor:
+        <span class="badge bg-success">
+            <a data-toggle="tooltip" title="Minor Certified"><i class="far fa-check-circle"></i> @Name</a>
+        </span>
+        break;
+    case CertificationType.Certified:
+        <span class="badge bg-success">
+            <a data-toggle="tooltip" title="Certified"><i class="fas fa-check"></i> @Name</a>
+        </span>
+        break;
+    default:
+        throw new ArgumentOutOfRangeException();
+}
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public CertificationType Type { get; set; }
+}

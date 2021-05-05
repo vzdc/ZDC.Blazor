@@ -1,13 +1,27 @@
-.navbar-default {
-    border: none !important;
+::-webkit-scrollbar {
+    width: 10px;
+    
 }
 
-.navbar {
-    border: none !important;
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-.navbar-nav {
-    border: none !important;
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.active {
+    background-color: #fff !important;
+    border-color: #f1f4f8 !important;
+}
+
+.navbar-dark.fixed-top > .container:after {
+    display: none;
 }
 
 .nav-item-padding {
@@ -17,6 +31,11 @@
 .container-zdc {
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.container-60 {
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .font-bold {

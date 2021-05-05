@@ -1,0 +1,362 @@
+﻿@page "/staff"
+@layout PublicLayout
+@using ZDC.Models
+@using ZDC.Blazor.Services
+@inject UserService UserService
+
+<div class="container-60" style="margin-top: 5%">
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                <i class="fas fa-users-cog"></i> Staff
+            </h3>
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                @if (_atm != null)
+                {
+                    <b>Air Traffic Manager - @_atm.FullName</b>
+                    <a href="mailto::atm@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                }
+                else
+                {
+                    <b>Air Traffic Manager - Vacant</b>
+                }
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <p class="text-center border-bottom border-dark">
+                The Air Traffic Manager is the Chief Executive and in charge of all oversight and administration of the ARTCC.
+                The ATM’s duties and responsibilities include, but are not limited to the following:
+            </p>
+            <br />
+            <ol class="text-left">
+                <li>Reports to the North Eastern Region Director (VATUSA9).</li>
+                <li>Responsible for all operations associated with the Washington D.C. ARTCC.</li>
+                <li>Maintains an online presence on the VATSIM server.</li>
+                <li>Attends periodic meetings to report on ARTCC activities.</li>
+                <li>Establishes an ARTCC web page and oversees its maintenance.</li>
+                <li>Initiates, obtains Air Traffic Director approval for, and maintains ARTCC Standard Operating Procedures.</li>
+                <li>Provides for coordination of position assignments and position restrictions when necessary.</li>
+                <li>Provides guidance and help to assigned controllers or guests. Optionally, establishes a staff of "Mentors" to assist controllers.</li>
+                <li>Establishes an Deputy Air Traffic Manager position and defines the duties of that position.</li>
+                <li>Recommends disciplinary actions to the region Air Traffic Director.</li>
+                <li>Establishes “assistant” positions for any ARTCC administrative position as required.</li>
+            </ol>
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                @if (_datm != null)
+                {
+                    <b>Deputy Air Traffic Manager - @_datm.FullName</b>
+                    <a href="mailto::datm@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                }
+                else
+                {
+                    <b>Deputy Air Traffic Manager - Vacant</b>
+                }
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <p class="text-center border-bottom border-dark">
+                The Deputy Air Traffic Manager is second in command of the oversight and administration of the ARTCC.
+                The DATM’s duties and responsibilities include, but are not limited to the following:
+            </p>
+            <br />
+            <ol class="text-left">
+                <li>Reports to the ATM.</li>
+                <li>Monitors the day-to-day activities of the ARTCC.</li>
+                <li>Assists in the development and execution of ARTCC projects.</li>
+                <li>Maintains an online presence on the VATSIM server.</li>
+                <li>Functions as ARTCC senior staff member. Attends periodic meetings to report on ARTCC activities.</li>
+                <li>Assists in coordination of position assignments and position restrictions when necessary.</li>
+                <li>Assumes the duties of the ATM when he is unavailable.</li>
+                <li>Any other duty assigned by the ATM.</li>
+            </ol>
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                @if (_ta != null)
+                {
+                    <b>Training Administrator - @_ta.FullName</b>
+                    <a href="mailto::ta@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                }
+                else
+                {
+                    <b>Training Administrator - Vacant</b>
+                }
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <p class="text-center border-bottom border-dark">
+                The Training Administrator is responsible for overseeing the development of Training Procedures and
+                Instructor/Mentor core of the facility. Duties include, but are not limited to the following:
+            </p>
+            <br />
+            <ol class="text-left">
+                <li>Reports to the ATM.</li>
+                <li>Responsible for the quality of the staff instructors and mentors.</li>
+                <li>Oversees and administers the ARTCC training program.</li>
+                <li>Develops and implements training-related material and projects.</li>
+                <li>Works in conjunction with the Facilities Engineer to develop and maintain ARTCC SOP's, LOA's and the ARTCC Training Policy.</li>
+                <li>
+                    Ensures that ARTCC instructor positions are adequately staffed. Recruits new instructors and recommends appointments to the
+                    ARTCC ATM and the VATUSA Training Department in accordance with VATUSA 3120.311.
+                </li>
+                <li>
+                    Works with instructors and mentors to develop their knowledge and to ensure that training
+                    standards are being uniformly applied to all students.
+                </li>
+                <li>Tracks the progress of student controllers, including testing, promotions, and recurrent and remedial instruction.</li>
+                <li>Manages and leads the Training Division of ZDC.</li>
+                <li>
+                    Appoints Assistant Training Administrator (ATA), if desired,
+                    to assist in TA duties with the exclusion of appointing instructors. The ATA must be approved by the ATM.
+                </li>
+            </ol>
+            @if (_ata != null)
+            {
+                <br />
+                <div class="border-bottom border-dark"></div>
+                <br />
+
+                <h4 class="text-center">
+                    <b>Assistant Training Administrator - @_ata.FullName</b>
+                    <a href="mailto::ata@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                </h4>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                @if (_wm != null)
+                {
+                    <b>Webmaster - @_wm.FullName</b>
+                    <a href="mailto::wm@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                }
+                else
+                {
+                    <b>Webmaster - Vacant</b>
+                }
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <p class="text-center border-bottom border-dark">
+                The Webmaster is responsible for the development and maintenance of the ARTCC website and associated files.
+            </p>
+            <br />
+            <ol class="text-left">
+                <li>Reports to the DATM.</li>
+                <li>Maintains, updates, and manages ARTCC website.</li>
+                <li>Technical adviser to the ATM.</li>
+                <li>Ensures database and website source code is backed-up as required.</li>
+                <li>Any other duties assigned by the DATM.</li>
+            </ol>
+            @if (_awm != null)
+            {
+                <br />
+                <div class="border-bottom border-dark"></div>
+                <br />
+
+                <h4 class="text-center">
+                    <b>Assistant Webmaster - @_awm.FullName</b>
+                    <a href="mailto::awm@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                </h4>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                @if (_ec != null)
+                {
+                    <b>Events Coordinator - @_ec.FullName</b>
+                    <a href="mailto::ec@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                }
+                else
+                {
+                    <b>Events Coordinator - Vacant</b>
+                }
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <p class="text-center border-bottom border-dark">
+                The Events Coordinator is responsible for the planning, scheduling, and execution of events at the ARTCC.
+                Duties include, but are not limited to, the following:
+            </p>
+            <br />
+            <ol class="text-left">
+                <li>Reports to the DATM.</li>
+                <li>Identifies and develops events to generate traffic and promote the ARTCC.</li>
+                <li>Implements and oversees approved events.</li>
+                <li>Coordinates with neighboring ARTCC to arrange support for ZDC hosted events and neighboring events.</li>
+                <li>Develops and distributes marketing materials to promote events and the ARTCC.</li>
+                <li>Appoints Assistant Events Coordinator (AEC), if desired, to assist in EC duties. Must be approved by the ATM.</li>
+            </ol>
+            @if (_aec != null)
+            {
+                <br />
+                <div class="border-bottom border-dark"></div>
+                <br />
+
+                <h4 class="text-center">
+                    <b>Assistant Events Coordinator - @_aec.FullName</b>
+                    <a href="mailto::aec@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                </h4>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                @if (_fe != null)
+                {
+                    <b>Facilities Engineer - @_fe.FullName</b>
+                    <a href="mailto::fe@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                }
+                else
+                {
+                    <b>Facilities Engineer - Vacant</b>
+                }
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <p class="text-center border-bottom border-dark">
+                The Facility Engineer is responsible for the development and maintenance of the following technical resources for the ARTCC:
+            </p>
+            <br />
+            <ol class="text-left">
+                <li>Reports to the DATM.</li>
+                <li>Maintains and updates VRC sector files, vSTARS files, vERAM files, and vATIS files.</li>
+                <li>Maintains and updates, in cooperation with the TA, SOPs and LOAs. </li>
+                <li>Manages ZDC facility resources.</li>
+            </ol>
+            @if (_afe != null)
+            {
+                <br />
+                <div class="border-bottom border-dark"></div>
+                <br />
+
+                <h4 class="text-center">
+                    <b>Assistant Facility Engineer - @_afe.FullName</b>
+                    <a href="mailto::afe@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                </h4>
+            }
+        </div>
+    </div>
+    <br />
+    <div class="card shadow-dark">
+        <div class="card-header bg-light padding">
+            <h3 class="font-bold text-center">
+                <i class="fas fa-users-cog"></i> Training Staff
+            </h3>
+        </div>
+        <div class="card-body bg-between padding">
+            <div class="row">
+                <div class="col-sm">
+                    <h3 class="font-bold text-center border-bottom border-dark">
+                        <b>Instructors</b>
+                        <a href="mailto::instructors@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                    </h3>
+                    <br />
+                    @if (_ins != null)
+                    {
+                        <table class="table table-sm table-borderless table-responsive-sm">
+                            <tbody>
+                                @foreach (var user in _ins)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            @user.FullName
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="font-bold text-center">No Instructors</p>
+                    }
+                </div>
+                <div class="col-sm">
+                    <h3 class="font-bold text-center border-bottom border-dark">
+                        <b>Mentors</b>
+                        <a href="mailto::mentors@vzdc.org" target="_blank"><i class="fas fa-envelope"></i></a>
+                    </h3>
+                    <br />
+                    @if (_mtr != null)
+                    {
+                        <table class="table table-sm table-borderless table-responsive-sm">
+                            <tbody>
+                                @foreach (var user in _mtr)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            @user.FullName
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="font-bold text-center">No Mentors</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+
+@code {
+    private IList<User> _staff;
+    private IList<User> _trainingStaff;
+    private IList<User> _mtr;
+    private IList<User> _ins;
+    private User _atm;
+    private User _datm;
+    private User _ta;
+    private User _ata;
+    private User _wm;
+    private User _awm;
+    private User _ec;
+    private User _aec;
+    private User _fe;
+    private User _afe;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _staff = await UserService.GetStaff();
+        _trainingStaff = await UserService.GetTrainingStaff();
+
+        _atm = _staff.FirstOrDefault(x => x.Role == UserRole.ATM);
+        _datm = _staff.FirstOrDefault(x => x.Role == UserRole.DATM);
+        _ta = _staff.FirstOrDefault(x => x.Role == UserRole.TA);
+        _ata = _staff.FirstOrDefault(x => x.Role == UserRole.ATA);
+        _wm = _staff.FirstOrDefault(x => x.Role == UserRole.WM);
+        _awm = _staff.FirstOrDefault(x => x.Role == UserRole.AWM);
+        _ec = _staff.FirstOrDefault(x => x.Role == UserRole.EC);
+        _aec = _staff.FirstOrDefault(x => x.Role == UserRole.AEC);
+        _fe = _staff.FirstOrDefault(x => x.Role == UserRole.FE);
+        _afe = _staff.FirstOrDefault(x => x.Role == UserRole.AFE);
+
+        _mtr = _trainingStaff.Where(x => x.TrainingRole == TrainingRole.MTR).OrderBy(x => x.LastName).ToList();
+        _ins = _trainingStaff.Where(x => x.TrainingRole == TrainingRole.INS).OrderBy(x => x.LastName).ToList();
+    }
+}
